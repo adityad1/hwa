@@ -38,9 +38,9 @@ if img_file_buffer:
     imgs = [img_features.slant_img, img_features.space_img, img_features.height_img, img_features.area_img]
     tabs = st.tabs(display_options)
     for i, tab in enumerate(tabs):
-        feature = display_options[i]
+        feature, size = display_options[i], 720
         tab.subheader(feature)
-        size = tab.slider('Adjust Plot Size ', min_value = 100, max_value = 1500, value = 500, step = 50, key = feature.split(' ')[0] + '_plotsize')
+        # size = tab.slider('Adjust Plot Size ', min_value = 100, max_value = 1500, value = 500, step = 50, key = feature.split(' ')[0] + '_plotsize')
         tab.plotly_chart(px.imshow(imgs[i], color_continuous_scale = 'magma' if i != 1 else 'gray', height = size, width = size))
     model = svm.SVC()
     df = pd.read_csv('df.csv', index_col = 0)
