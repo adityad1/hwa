@@ -33,8 +33,8 @@ if img_file_buffer:
     img = cv2.imdecode(np.frombuffer(img_file_buffer.getvalue(), np.uint8), cv2.IMREAD_COLOR)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     img_features = Image_fe(img_name = gray, local = False, ruled = ruled)
-    if not st.session_state['features']:
-        st.session_state['features'] = img_features.word_fe()
+#     if not st.session_state['features']:
+    st.session_state['features'] = img_features.word_fe()
     display_options = ['Word Segmentation', 'Slant Variance', 'Height Uniformity', 'Area Uniformity']
     imgs = [img_features.slant_img, img_features.height_img, img_features.area_img]
     tabs = st.tabs(display_options)
